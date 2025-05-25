@@ -23,4 +23,48 @@ public class BookService {
     return bookList;
 
   }
+
+  public BookDTO selectBookByCode(int code) {
+    SqlSession sqlSession = getSqlSession();
+    BookDTO book = bookDAO.selectBookByCode(sqlSession, code);
+    sqlSession.close();
+    return book;
+  }
+
+  public boolean registBook(BookDTO book) {
+    SqlSession sqlSession = getSqlSession();
+    int result = bookDAO.registBook(sqlSession, book);
+    if (result > 0) {
+      sqlSession.commit();
+    } else {
+      sqlSession.rollback();
+    }
+    sqlSession.close();
+    return result > 0 ? true : false;
+  }
+
+  public boolean modifyBook(BookDTO book) {
+    SqlSession sqlSession = getSqlSession();
+    int result = bookDAO.modifyBook(sqlSession, book);
+    if (result > 0) {
+      sqlSession.commit();
+    } else {
+      sqlSession.rollback();
+    }
+    sqlSession.close();
+    return result > 0;
+  }
+
+  public int deleteBookByCode(int bookCode) {
+    SqlSession sqlSession = getSqlSession();
+    int result = bookDAO.deleteBookByCode(sqlSession, bookCode);
+    if (result > 0) {
+      sqlSession.commit();
+    } else {
+      sqlSession.rollback();
+    }
+    sqlSession.close();
+    return result;
+  }
+
 }
