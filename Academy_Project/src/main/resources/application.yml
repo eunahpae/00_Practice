@@ -1,0 +1,13 @@
+## servet port config
+server:
+  port: 8001
+
+## driver config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/academy
+    username: ohgiraffers
+    password: ohgiraffers
+mybatis:
+  mapper-locations: mappers/**/*.xml

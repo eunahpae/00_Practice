@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.academy_project.subject.model.dao.SubjectMapper">
+
+  <resultMap id="subjectResultMap"
+    type="com.ohgiraffers.academy_project.subject.model.dto.SubjectDTO">
+    <id property="subjectCode" column="SUBJECT_CODE"/>
+    <result property="subjectName" column="SUBJECT_NAME"/>
+    <result property="subjectStatus" column="STATUS"/>
+  </resultMap>
+
+  <select id="findAllSubject" resultMap="subjectResultMap">
+    SELECT * FROM TBL_SUBJECT
+  </select>
+
+</mapper>
